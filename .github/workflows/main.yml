@@ -26,6 +26,8 @@ jobs:
             echo "Moving static files..."
             cp -r website/build/* .
             cp -r website/other/* .
+
+            git checkout -b gh-pages
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
         with:
