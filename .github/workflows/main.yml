@@ -18,9 +18,14 @@ jobs:
       - name: Install PIP
         run: |
           pip install -r requirements.txt
-      - name: Run publish script
+      - name: Move files to the right place
         run: |
-          ./publish
+            echo "Freezing..."
+            python3 freezer.py
+
+            echo "Moving static files..."
+            cp -r website/build/* .
+            cp -r website/other/* .
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
         with:
